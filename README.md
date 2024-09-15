@@ -106,8 +106,8 @@ GET /search**: Search for files based on metadata like name, upload date, expect
 
 **Caching Layer for File Metadata** 
 </br>
-
 Implements Redis for caching file metadata to reduce database load. The cache is invalidated when metadata is updated.
+</br>
 
 **Middleware for authentication**
 </br>

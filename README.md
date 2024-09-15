@@ -33,7 +33,11 @@ docker compose up --build
 
 It'll take a minute but this should start the application.The `go run migrations/migration.go` ensures that all the relations are created inside your postgres server and are ready to use
 
-![run](images/i1.png)
+![run](images/i11.png)
+</br>
+</br>
+
+![run2](images/i12.png)
 
 ## Project Description
 

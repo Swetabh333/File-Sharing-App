@@ -1,21 +1,40 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/Swetabh333/trademarkia/database"
 	"github.com/Swetabh333/trademarkia/middleware"
 	"github.com/Swetabh333/trademarkia/routes"
+	"github.com/Swetabh333/trademarkia/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"gorm.io/gorm"
 )
 
 const (
 	uploadDir = "./uploads"
 	baseURL   = "http://localhost:8080"
 )
+
+// background deletion
+func initFileDeleteWorker(db *gorm.DB) {
+	worker := utils.NewFileDeleteWorker(
+		db,
+		"uploads",       //uploads directory
+		2*time.Hour,     // Run every hour
+		30*24*time.Hour, // Files expire after 30 days
+	)
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go worker.Start(ctx)
+}
 
 func main() {
 	//Loading the environament variables
@@ -30,6 +49,9 @@ func main() {
 		log.Fatalf("Could not connect to the database")
 	}
 	fmt.Println("Connected to db")
+
+	initFileDeleteWorker(db)
+
 	redis_client := database.ConnectToRedis()
 	//Setting up our gin http server
 	router := gin.Default()

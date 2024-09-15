@@ -1,11 +1,11 @@
 # File Sharing File System
 
-
 This program implements a File Sharing System using Go
 
 ## Installation
 
 The following commands will clone the repository and change the directory into the project.
+
 ```bash
 git clone https://github.com/Swetabh333/21BIT0278_BACKEND.git
 cd 21BIT0278_BACKEND
@@ -15,13 +15,9 @@ cd 21BIT0278_BACKEND
 
 Edit the docker-compose.yaml file inside the 21BIT0278_BACKEND directory.
 
-You need to set-up the following environment variables : 
+You need to set-up the following environment variables :
 
-* **JWT_SECRET** : Enter your secret for json web tokens here
-
-
-
-
+- **JWT_SECRET** : Enter your secret for json web tokens here
 
 ## Running the program
 
@@ -31,7 +27,7 @@ After installation and Environment setup it's time to run the program, you can d
 docker compose up --build
 ```
 
-It'll take a minute but this should start the application.The `go run migrations/migration.go` ensures that all the relations are created inside your postgres server and are ready to use
+It'll take a minute but this should start the application.
 
 ![run](images/i11.png)
 </br>
@@ -44,10 +40,11 @@ It'll take a minute but this should start the application.The `go run migrations
 This project is a file-sharing platform that allows users to upload, manage, and share files. The system supports multiple users, file uploads, metadata management in PostgreSQL, and caching using Redis. It is built in Go with a focus on concurrency, performance optimization, and scalability.
 
 ### Available Endpoints
+
 1. **User Authentication & Authorization
-POST /register**: Register a new user with an email and password.
-</br>
-</br>
+   POST /register**: Register a new user with an email and password.
+   </br>
+   </br>
 
 ![register](images/i2.png)
 </br>
@@ -58,8 +55,7 @@ POST /register**: Register a new user with an email and password.
 
 ![login](images/i3.png)
 </br>
-</br>
-2. **File Upload & Management
+</br> 2. **File Upload & Management
 POST /upload**: Upload a file to local storage or S3. The file’s metadata is stored in PostgreSQL.
 </br>
 </br>
@@ -74,8 +70,7 @@ POST /upload**: Upload a file to local storage or S3. The file’s metadata is s
 
 ![files](images/i5.png)
 </br>
-</br>
-3. **File Retrieval & Sharing
+</br> 3. **File Retrieval & Sharing
 GET /share/:file_id**
 : Share a public link for a specific file, enabling access through the generated URL.
 
@@ -95,7 +90,7 @@ You can paste the public_url returned from this endpoint and access the file.
 </br>
 
 4. **File Search
-GET /search**: Search for files based on metadata like name, upload date, expects form data with name and date.
+   GET /search**: Search for files based on metadata like name, upload date, expects form data with name and date.
 
 </br>
 </br>
@@ -104,15 +99,16 @@ GET /search**: Search for files based on metadata like name, upload date, expect
 </br>
 </br>
 
-5. **Caching Layer for File Metadata** 
-</br>
-Implements Redis for caching file metadata to reduce database load. The cache is invalidated when metadata is updated.
-</br>
+5. **Caching Layer for File Metadata**
+   </br>
+   Implements Redis for caching file metadata to reduce database load. The cache is invalidated when metadata is updated.
+   </br>
 
 6. **Middleware for authentication**
-</br>
-Middleware for route protection -  /upload, /share, /search routes are protected via the middleware,only an authenticated user can access these.
+   </br>
+   Middleware for route protection - /upload, /share, /search routes are protected via the middleware,only an authenticated user can access these.
 
 7. **Background Job for File Deletion**
-</br>
-A background worker periodically deletes expired files from storage and removes the associated metadata from the database.
+   </br>
+   A background worker periodically deletes expired files from storage and removes the associated metadata from the database.
+

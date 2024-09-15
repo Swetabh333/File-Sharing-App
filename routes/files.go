@@ -103,7 +103,7 @@ func processFile(db *gorm.DB, file *multipart.FileHeader, userID uuid.UUID) (*mo
 
 	filename := uuid.New().String() + filepath.Ext(file.Filename)
 	filepath := filepath.Join(uploadDir, filename)
-
+	fmt.Printf("filename: %s , filepath: %s \n", filename, filepath)
 	if err := os.MkdirAll(uploadDir, os.ModePerm); err != nil {
 		return nil, fmt.Errorf("failed to save file %w", err)
 	}

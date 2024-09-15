@@ -5,24 +5,21 @@ This program implements a File Sharing System using Go
 
 ## Installation
 
-The following commands will clone the repository and install the required dependencies.
+The following commands will clone the repository and change the directory into the project.
 ```bash
 git clone https://github.com/Swetabh333/21BIT0278_BACKEND.git
 cd 21BIT0278_BACKEND
-go mod download
 ```
 
 ## Environment Setup
 
-Create a .env file inside the 21BIT0278_BACKEND directory at the top level.
+Edit the docker-compose.yaml file inside the 21BIT0278_BACKEND directory.
 
 You need to set-up the following environment variables : 
-* **DSN_STRING** : This is the connection string to connect to your postgres database. Your connection string should look something like this if you are using locally hosted postgres.
-`"host=localhost user=postgres password=mysecretpassword port=5432 dbname=trademarkia_task sslmode=disable"`
 
 * **JWT_SECRET** : Enter your secret for json web tokens here
 
-* **REDIS_URL** : Give the port and adress your redis is running on FOr ex: `"localhost:6379"`
+
 
 
 
@@ -31,8 +28,7 @@ You need to set-up the following environment variables :
 After installation and Environment setup it's time to run the program, you can do that with the following command :
 
 ```bash
-go run migrations/migration.go
-go build -o main && ./main
+docker compose up --build
 ```
 
 It'll take a minute but this should start the application.The `go run migrations/migration.go` ensures that all the relations are created inside your postgres server and are ready to use

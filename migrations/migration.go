@@ -3,7 +3,7 @@ package main
 import (
 	databse "github.com/Swetabh333/trademarkia/database"
 	models "github.com/Swetabh333/trademarkia/models"
-	"github.com/joho/godotenv"
+	//	"github.com/joho/godotenv"
 	"log"
 )
 
@@ -12,10 +12,10 @@ import (
 
 func main() {
 
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file: %s", err)
-	}
+	//	err := godotenv.Load(".env")
+	//if err != nil {
+	//	log.Fatalf("Error loading .env file: %s", err)
+	//	}
 
 	db, err := databse.ConnectToDatabase()
 	if err != nil {
@@ -24,7 +24,7 @@ func main() {
 	err = db.AutoMigrate(&models.User{}, &models.Filedata{})
 
 	if err != nil {
-		log.Fatalf("Failed to migrate")
+		log.Fatalf("Failed to migrate : %s", err)
 	}
 	log.Println("Migration completed.")
 }

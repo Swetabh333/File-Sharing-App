@@ -25,6 +25,6 @@ type Filedata struct {
 	Size       int64     `gorm:"size255;not null"`
 	UploadedAt time.Time
 	CreatedAt  time.Time `gorm:"default:CURRENT_TIMESTAMP"`
-	UpdatedAt  time.Time `gorm:"default:CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"`
+	UpdatedAt  time.Time `gorm:"default:CURRENT_TIMESTAMP"`
 	User       User      `gorm:"foreignKey:UserID;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }

@@ -104,11 +104,15 @@ GET /search**: Search for files based on metadata like name, upload date, expect
 </br>
 </br>
 
-**Caching Layer for File Metadata** 
+5. **Caching Layer for File Metadata** 
 </br>
 Implements Redis for caching file metadata to reduce database load. The cache is invalidated when metadata is updated.
 </br>
 
-**Middleware for authentication**
+6. **Middleware for authentication**
 </br>
 Middleware for route protection -  /upload, /share, /search routes are protected via the middleware,only an authenticated user can access these.
+
+7. **Background Job for File Deletion**
+</br>
+A background worker periodically deletes expired files from storage and removes the associated metadata from the database.

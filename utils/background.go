@@ -13,17 +13,15 @@ import (
 
 type FileDeleteWorker struct {
 	db           *gorm.DB
-	storageDir   string
 	interval     time.Duration
 	expiryPeriod time.Duration
 }
 
 // Creates a new delete worker
 
-func NewFileDeleteWorker(db *gorm.DB, storageDir string, interval time.Duration, expiryPeriod time.Duration) *FileDeleteWorker {
+func NewFileDeleteWorker(db *gorm.DB, interval time.Duration, expiryPeriod time.Duration) *FileDeleteWorker {
 	return &FileDeleteWorker{
 		db:           db,
-		storageDir:   storageDir,
 		interval:     interval,
 		expiryPeriod: expiryPeriod,
 	}
@@ -55,7 +53,7 @@ func (w *FileDeleteWorker) deleteExpiredFiles() {
 
 	for _, file := range expiredFiles {
 		// Delete from local storage
-		filePath := fmt.Sprintf("./", file.Path)
+		filePath := fmt.Sprintf("./%s", file.Path)
 		err := os.Remove(filePath)
 		if err != nil {
 			if os.IsNotExist(err) {

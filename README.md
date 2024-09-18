@@ -7,7 +7,7 @@ This program implements a File Sharing System using Go
 The following commands will clone the repository and change the directory into the project.
 
 ```bash
-git clone https://github.com/Swetabh333/21BIT0278_BACKEND.git
+git clone https://github.com/Swetabh333/File-Sharing-App.git
 cd 21BIT0278_BACKEND
 ```
 

@@ -85,7 +85,7 @@ You can paste the public_url returned from this endpoint and access the file.
 </br>
 </br>
 
-![url](images/i8.png)
+<img src="images/i8.png" height=20px>
 </br>
 </br>
 

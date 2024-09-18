@@ -56,7 +56,7 @@ This project is a file-sharing platform that allows users to upload, manage, and
 ![login](images/i3.png)
 </br>
 </br> 2. **File Upload & Management
-POST /upload**: Upload a file to local storage or S3. The file’s metadata is stored in PostgreSQL.
+POST /upload**: Upload a file to local storage. The file’s metadata is stored in PostgreSQL.
 </br>
 </br>
 

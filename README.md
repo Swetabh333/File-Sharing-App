@@ -8,7 +8,7 @@ The following commands will clone the repository and change the directory into t
 
 ```bash
 git clone https://github.com/Swetabh333/File-Sharing-App.git
-cd 21BIT0278_BACKEND
+cd File-Sharing-App
 ```
 
 ## Environment Setup
